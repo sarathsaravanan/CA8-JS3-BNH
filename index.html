@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sarathkiran Saravanan">
+    <title>Bear Ninja Hunter</title>
+</head>
+<body>
+    <h1>Bear Ninja Hunter Game</h1>
+    <p id="game-result">Waiting for game results...</p>
+
+    <script>
+        // the player can select their name
+        let playerName = prompt("Welcome to Bear Hunter Ninja! Please enter your name to get started:");
+
+        alert("Hi " + playerName + "! Let's play!!");
+        // this is the main part of the game, where they select either bear, ninja, or hunter
+        let playerChoice = prompt("Who are you? Bear, Ninja, or Hunter?");
+        // hardcoded to bear for now
+        let computerChoice = "Bear";
+
+        let gameResult = "";
+        // this is the main thing using conditionals, checking the options to see if you will win or not
+        switch (playerChoice) {
+            // bear case
+            case "Bear":
+                if (computerChoice === "Bear") {
+                    gameResult = "It is a Tie! Both chose Bear.";
+                } else if (computerChoice === "Ninja") {
+                    gameResult = "Bear eats Ninja! You Win!";
+                } else {
+                    gameResult = "Hunter shoots Bear! You Lose!";
+                }
+                break;
+            // ninja case
+            case "Ninja":
+                if (computerChoice === "Bear") {
+                    gameResult = "Bear eats Ninja! You Lose!";
+                } else if (computerChoice === "Ninja") {
+                    gameResult = "It is a Tie! Both chose Ninja.";
+                } else {
+                    gameResult = "Ninja kills Hunter! You Win!";
+                }
+                break;
+            // hunter case
+            case "Hunter":
+                if (computerChoice === "Bear") {
+                    gameResult = "Hunter shoots Bear! You Win!";
+                } else if (computerChoice === "Ninja") {
+                    gameResult = "Ninja kills Hunter! You Lose!";
+                } else {
+                    gameResult = "It is a Tie! Both chose Hunter.";
+                }
+                break;
+
+            default:
+                gameResult = "Invalid choice. Please refresh and try again with Bear, Ninja, or Hunter.";
+        }
+        // this is the final message that's crafted. it shows the final outcome
+        let finalMessage = playerName + ", you chose " + playerChoice + "! The computer chose " + computerChoice + "! " + gameResult;
+        // prints the final message in the console
+        console.log(finalMessage);
+        document.getElementById("game-result").innerHTML = finalMessage;
+    </script>
+</body>
+</html>
